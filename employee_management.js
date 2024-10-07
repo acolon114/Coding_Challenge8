@@ -1,5 +1,4 @@
 // Task 1: Create an Employee Class
-
 class Employee {
     constructor(name, salary, position, department) {
         this.name = name;
@@ -8,13 +7,14 @@ class Employee {
         this.department = department;
     }
 
+    // Print class details
     getDetails() {
         console.log(`Employee ${this.name} makes $${this.salary} employed as a(n) ${this.department} ${this.position}.`);
     }
 };
 
-// Task 2: Create departments
-class Department {
+// Task 2: Create a Departments Class
+class Department { 
     constructor(name, employees) {
         this.name = name;
         this.employees = [];
@@ -26,17 +26,21 @@ class Department {
 
     getDepartmentSalary() {
         let totalSalary = 0
+        // Iterate through department employees, adding their salaries
         for (const employee of this.employees) {
             totalSalary += employee.salary
         }
         return totalSalary;
     }
 
-// Task 4: Handle Bonuses for Managers
+    // Task 4: Handle Bonuses for Managers
     calculateTotalSalaryWithBonus() {
         let totalSalary = 0;
+        // Iterate through employees
         for (const employee of this.employees) {
             totalSalary += employee.salary;
+            
+            // Check if employee has associated bonus
             if (employee.bonus) {
                 totalSalary += employee.bonus;
             }
@@ -46,13 +50,13 @@ class Department {
 }
 
 //Task 3: Create a Manager Class that Inherits from Employee
-
 class Manager extends Employee {
     constructor(name, salary, position, department, bonus) {
-        super(name, salary, position, department);
-        this.bonus = bonus;
+        super(name, salary, position, department); // Inherit employee structure
+        this.bonus = bonus; // Add bonus
     }
 
+    // Print class details
     getDetails() {
         console.log(`Manager ${this.name} makes $${this.salary}, with a bonus of $${this.bonus}, employed as a(n) ${this.department} ${this.position}.`);
     }
@@ -75,7 +79,7 @@ marketing.addEmployee(bob);
 marketing.addEmployee(diana);
 
 // Calculate total salary for each department
-console.log(`Total salary for Engineering: $${engineering.getDepartmentSalary()}`);
-console.log(`Total salary with bonuses for Engineering: $${engineering.calculateTotalSalaryWithBonus()}`);
-console.log(`Total salary for Marketing: $${marketing.getDepartmentSalary()}`);
-console.log(`Total salary with bonuses for Marketing: $${marketing.calculateTotalSalaryWithBonus()}`);
+console.log(`Total salary for Engineering: $${engineering.getDepartmentSalary()}`); //Output: Total salary for Engineering: $200000
+console.log(`Total salary with bonuses for Engineering: $${engineering.calculateTotalSalaryWithBonus()}`); //Output: Total salary with bonuses for Engineering: $220000
+console.log(`Total salary for Marketing: $${marketing.getDepartmentSalary()}`); //Output: Total salary for Marketing: $205000
+console.log(`Total salary with bonuses for Marketing: $${marketing.calculateTotalSalaryWithBonus()}`); // Output: Total salary with bonuses for Marketing: $230000
