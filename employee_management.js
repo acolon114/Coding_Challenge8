@@ -32,6 +32,19 @@ class Department {
         return totalSalary;
     }
 
+// Task 4: Handle Bonuses for Managers
+    calculateTotalSalaryWithBonus() {
+        let totalSalary = 0;
+        for (const employee of this.employees) {
+            totalSalary += employee.salary;
+            if (employee.bonus) {
+                totalSalary += employee.bonus;
+            }
+        }
+        return totalSalary;
+    }
+}
+
 //Task 3: Create a Manager Class that Inherits from Employee
 
 class Manager extends Employee {
